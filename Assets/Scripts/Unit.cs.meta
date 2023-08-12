@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: b87684c3f29a03644a0d2c99d8243a13
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - moveSquare: {fileID: 8992157590524185358, guid: fd744c43e9c0c744299eeec68251f63c, type: 3}
+  - attackSquare: {fileID: 9221829185616302824, guid: 3f2096422dc3a8349a14aa06d91a3810, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
