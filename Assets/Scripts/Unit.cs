@@ -101,7 +101,7 @@ namespace unit
         //Goes for as long as the value of mov is
         //Calculates move correctly, however, doesn't account for enemies blocking the way or terrain
         //If there is an enemy or inpassable terrain, red sqaure appears in its place to signify invalid square
-        public void getMoveVision()
+        /*public void getMoveVision()
         {
             this.gameObject.GetComponent<Animator>().SetBool("isSelected", true);
             Vector3 tempOffset = new Vector3(0, 0, 0);
@@ -158,8 +158,52 @@ namespace unit
             tempOffset = new Vector3(squareOffsetX, squareOffsetY + nonsense, -0.01f);
             Instantiate(attackSquare, transform.position - tempOffset, new Quaternion(0, 0, 0, 0), transform);
             //worry about terrain later
-        }
+        }*/
 
+        public void getMoveVision()
+        {
+            this.gameObject.GetComponent<Animator>().SetBool("isSelected", true);
+            Vector3 offset, smallOffset, smallerOffset;
+            Quaternion angles = new Quaternion(0, 0, 0, 0);
+            int magicNumber = mov + 1;
+
+            //Center First
+            /*offset = new Vector3(squareOffsetX - 0, squareOffsetY, 0.01f);
+            Instantiate(moveSquare, transform.position + offset, angles, transform);*/
+
+            //Now Left
+            /*offset = new Vector3(squareOffsetX - 1, squareOffsetY, 0.01f);
+            Instantiate(moveSquare, transform.position + offset, angles, transform);*/
+            for (int bogus = 0; bogus <= mov; bogus++)
+            {
+                offset = new Vector3(squareOffsetX - bogus, squareOffsetY, 0.01f);
+                Instantiate(moveSquare, transform.position + offset, angles, transform);
+                
+                //go up first
+                for (int smallBogus = bogus + 1; smallBogus <= mov; smallBogus++)
+                {
+                    smallOffset = new Vector3(squareOffsetX - bogus, squareOffsetY + (smallBogus - bogus), 0.01f);
+                    Instantiate(moveSquare, transform.position + smallOffset, angles, transform);
+
+                    /*smallerOffset = new Vector3(smallOffset.x - 1, smallOffset.y, 0.01f);
+                    Instantiate(moveSquare, transform.position + smallerOffset, angles, transform);*/
+
+                    //go left again
+                    for (int smallerBogus = smallBogus + 1; smallerBogus <= mov; smallerBogus++)
+                    {
+                        smallerOffset = new Vector3(smallOffset.x - (smallerBogus - smallBogus), smallOffset.y, 0.01f);
+                        Instantiate(moveSquare, transform.position + smallerOffset, angles, transform);
+                    }
+
+                    //go right again
+                    /*for (int smallerBogus = smallBogus + 1; smallerBogus <= mov; smallerBogus++)
+                    {
+                        smallerOffset = new Vector3(smallOffset.x + (smallerBogus - smallBogus), smallOffset.y, 0.01f);
+                        Instantiate(moveSquare, transform.position + smallerOffset, angles, transform);
+                    }*/
+                }
+            }
+        }
         //Method used to kill all of the unit's children
         //Loops through all the children of the unit GameObject and destroys them all
         //Used to get rid of movement/attack squares
