@@ -9624,7 +9624,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainPlayer: {fileID: 1324977607}
-  offset: {x: 0, y: 0.5, z: 0}
+  offset: {x: 0, y: 0.5, z: -0.1}
   commandController: {fileID: 610498518}
   multiple: 10
 --- !u!212 &489430516
